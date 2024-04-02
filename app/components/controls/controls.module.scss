@@ -1,0 +1,171 @@
+@import './../../styles/shared.scss';
+
+$spacing: 0.5rem;
+
+.img-loader {
+  display: none;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+
+  %col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+
+    padding: 0 0.25rem;
+  }
+
+  %spacing-b {
+    margin-bottom: $spacing * 2;
+
+    @include media-breakpoint('sm') {
+      margin-bottom: $spacing;
+    }
+
+    @include media-breakpoint('lg') {
+      margin-bottom: 0;
+    }
+  }
+
+  %col-xs-50 {
+    max-width: 50%;
+  }
+
+  %col-sm-50 {
+    @include media-breakpoint('sm') {
+      max-width: 50%;
+    }
+  }
+
+  %col-lg-30 {
+    @include media-breakpoint('lg') {
+      max-width: 30%;
+    }
+  }
+
+  .col-dnd {
+    @extend %col;
+    @extend %spacing-b;
+
+    padding: 0 0.5rem;
+
+    @include media-breakpoint('sm') {
+      height: calc(100% - #{$spacing});
+      max-width: 40%;
+    }
+
+    @include media-breakpoint('md') {
+      max-width: 30%;
+    }
+
+    @include media-breakpoint('lg') {
+      height: 100%;
+    }
+  }
+
+  .col-controls {
+    @extend %col;
+
+    @include media-breakpoint('sm') {
+      max-width: 60%;
+    }
+
+    @include media-breakpoint('md') {
+      max-width: 70%;
+    }
+  }
+
+  .col-resolution {
+    @extend %col;
+    @extend %col-sm-50;
+    @extend %spacing-b;
+
+    @include media-breakpoint('lg') {
+      max-width: 20%;
+    }
+  }
+
+  .col-palette {
+    @extend %col;
+    @extend %col-sm-50;
+    @extend %col-lg-30;
+    @extend %spacing-b;
+  }
+
+  .col-zoom {
+    @extend %col;
+    @extend %col-xs-50;
+    @extend %col-sm-50;
+    @extend %col-lg-30;
+    @extend %spacing-b;
+
+    margin-top: 1rem;
+
+    @include media-breakpoint('lg') {
+      margin-top: 0;
+    }
+  }
+
+  .col-grid {
+    @extend %col;
+    @extend %col-xs-50;
+    @extend %col-sm-50;
+    @extend %spacing-b;
+
+    margin-top: 1rem;
+
+    @include media-breakpoint('lg') {
+      width: auto;
+      margin-top: 0;
+    }
+  }
+}
+
+.dnd-item {
+  display: flex !important;
+  flex-grow: 1 !important;
+  width: 100%;
+  max-width: none !important;
+  min-width: auto !important;
+  padding: 0 1rem !important;
+  margin-bottom: 0.125rem;
+}
+
+.slider-item {
+  padding: 0 1rem;
+
+  & > {
+    padding: 0 !important;
+  }
+
+  .marks {
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 1rem;
+
+    * {
+      font-size: 0.75rem;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+}
+
+.placeholder {
+  position: absolute;
+  font-size: 0.8rem;
+  top: -1.2rem;
+  left: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+}

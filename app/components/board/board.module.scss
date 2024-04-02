@@ -1,0 +1,53 @@
+@import './../../styles/shared.scss';
+
+$spacing: 0.5rem;
+
+%vars {
+  --width: calc(100vw - #{$spacing * 2});
+  --pixel-size: calc((var(--width) * var(--zoom)) / var(--pixels));
+
+  @include media-breakpoint('sm') {
+    --width: calc(50vw - #{$spacing * 2});
+  }
+
+  @include media-breakpoint('xl') {
+    --width: calc(#{get-breakpoint('xl')} / 2 - #{$spacing * 2});
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: map-get($breakpoints, 'xl');
+  margin: 0 auto;
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    width: 100%;
+    padding: 0 $spacing;
+    margin-top: 1rem;
+
+    @include media-breakpoint('sm') {
+      width: calc(100% / 2);
+    }
+  }
+}
+
+.board {
+  @extend %vars;
+
+  font-size: var(--pixel-size);
+  width: var(--width);
+  overflow: hidden;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+}

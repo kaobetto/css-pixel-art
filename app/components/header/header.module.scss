@@ -1,0 +1,38 @@
+@import './../../styles/shared.scss';
+
+.main-header {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  min-height: 3rem;
+  width: 100%;
+
+  margin-bottom: 1rem;
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.25);
+
+  .header-inner {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+    max-width: map-get($breakpoints, 'xl');
+
+    padding: 0 0.5rem;
+  }
+
+  .nav-brand {
+    color: #212121;
+    text-decoration: none;
+    margin-right: auto;
+
+    * {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+  }
+}

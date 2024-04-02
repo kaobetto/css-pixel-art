@@ -1,0 +1,45 @@
+@import './../../styles/shared.scss';
+
+.editor-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 15rem;
+  overflow: hidden;
+  border-radius: 1rem;
+
+  @include media-breakpoint('sm') {
+    min-height: auto;
+  }
+
+  .editor-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0;
+    overflow: auto;
+  }
+
+  .editor-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  &.css-editor {
+    flex-grow: 1;
+  }
+
+  &.html-editor {
+    min-height: 7.75rem;
+    max-height: 7.75rem;
+    margin-bottom: 0.5rem;
+
+    .editor-inner {
+      overflow: hidden;
+    }
+  }
+}

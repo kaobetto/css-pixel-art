@@ -1,0 +1,30 @@
+@import './../../styles/shared.scss';
+
+%vars {
+  --bg-size: calc(var(--pixel-size) * 2);
+}
+
+$gradient-grid: linear-gradient(
+  45deg,
+  #ddd 25%,
+  transparent 25%,
+  transparent 75%,
+  #ddd 75%,
+  #ddd
+);
+
+.panel {
+  @extend %vars;
+
+  display: flex;
+  width: 100%;
+  padding-top: 100%;
+  background: #eee;
+
+  &.bg-grid {
+    background: white;
+    background-size: var(--bg-size) var(--bg-size);
+    background-image: $gradient-grid, $gradient-grid;
+    background-position: 0 0, var(--pixel-size) var(--pixel-size);
+  }
+}

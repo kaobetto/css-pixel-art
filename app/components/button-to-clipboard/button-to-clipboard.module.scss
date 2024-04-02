@@ -1,0 +1,24 @@
+@import './../../styles/shared.scss';
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  button {
+    margin-bottom: 0.75rem;
+  }
+
+  @include media-breakpoint('xs') {
+    flex-direction: row;
+    width: auto;
+
+    button {
+      margin: 0;
+    }
+
+    button ~ button {
+      margin-left: 1rem;
+    }
+  }
+}
