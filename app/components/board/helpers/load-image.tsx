@@ -13,7 +13,7 @@ export const parseImage = async (
 
     // Draw the image on the canvas
     if (canvas.current) {
-      const ctx = canvas.current.getContext('2d');
+      const ctx = canvas.current.getContext('2d', { willReadFrequently: true });
 
       // Clear the canvas before drawing the new image
       ctx && ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
