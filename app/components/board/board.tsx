@@ -18,6 +18,11 @@ const getCSSVars = (resolution: number, zoom: number): React.CSSProperties => {
 };
 
 const Board = () => {
+  const [controlLoader, setControlLoader] = useState<{
+    show: boolean;
+    timeoutId?: NodeJS.Timeout;
+  }>({ show: false });
+
   const [imageData, setImageData] = useState<IImageData>({
     color: '',
     colorBg: '',
@@ -39,9 +44,25 @@ const Board = () => {
       controlsData.resolution,
       controlsData.canvas
     )
-      .then((parsed) => setImageData((prev) => ({ ...prev, parsed })))
+      .then((parsed) => {
+        setImageData((prev) => ({ ...prev, parsed }));
+        setControlLoader((prev) => ({ ...prev, show: true }));
+      })
       .catch(() => console.log('no image provided'));
   }, [controlsData.imageUrl, controlsData.resolution, controlsData.canvas]);
+
+  // Loading control
+  useEffect(() => {
+    if (controlLoader.show) {
+      if (controlLoader.timeoutId) {
+        clearTimeout(controlLoader.timeoutId);
+      }
+
+      controlLoader.timeoutId = setTimeout(() => {
+        setControlLoader((prev) => ({ ...prev, show: false }));
+      }, 100);
+    }
+  }, [controlLoader]);
 
   // Draw pixels
   useEffect(() => {
@@ -73,6 +94,7 @@ const Board = () => {
               backgroundColor={imageData.colorBg}
               boxShadow={imageData.boxShadow}
               color={imageData.color}
+              loading={controlLoader.show}
             ></BoardDrawing>
           </div>
         </div>
