@@ -21,7 +21,7 @@ export const DEFAULT_CONTROLS_DATA = {
   zoom: 1,
   zoomPercent: 100,
   imageUrl: '',
-  resolution: 32,
+  resolution: 96,
   gridToggle: true,
 };
 
