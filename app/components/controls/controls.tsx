@@ -108,6 +108,7 @@ const Controls = ({ initialData, eventHandler }: IControlsProps) => {
                   Resolution (bits)
                 </InputLabel>
                 <Select
+                  MenuProps={{ disableScrollLock: true }}
                   labelId="select-resolution-label"
                   label="Resolution (bits)"
                   id="select-resolution"
@@ -127,6 +128,7 @@ const Controls = ({ initialData, eventHandler }: IControlsProps) => {
               <FormControl fullWidth>
                 <InputLabel id="select-palette-label">Palette</InputLabel>
                 <Select
+                  MenuProps={{ disableScrollLock: true }}
                   labelId="select-palette-label"
                   label="Palette"
                   id="select-palette"
